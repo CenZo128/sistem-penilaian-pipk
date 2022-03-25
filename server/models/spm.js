@@ -11,11 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      spm.hasMany(models.document)
     }
   }
   spm.init({
     nomorspm: {
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
       validate: {
         notEmpty: {
           message: "nomorspm can't be empty."
