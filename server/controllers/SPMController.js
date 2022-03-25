@@ -1,11 +1,21 @@
-const { spm } = require('../models')
+const { spm, document } = require('../models')
 
 class UserController {
     static async allSPMs(req, res) {
         try {
             const spms = await spm.findAll()
+            let documents = await document.findAll()
 
-            res.status(200).json(spms)
+            let tempSpms = spms.map(spm => {
+                let { id, nomorspm, createdAt, updatedAt } = spm;
+                let tempDocuments = documents.filter(document => id === document.spmId)
+                return {
+                    id, nomorspm, createdAt, updatedAt,
+                    documents: tempDocuments
+                }
+            })
+
+            res.status(200).json(tempSpms)
         } catch (err) {
             res.status(500).json(err)
         }

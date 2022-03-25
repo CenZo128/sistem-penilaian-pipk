@@ -1,9 +1,11 @@
-const { document } = require('../models')
+const { document,spm } = require('../models')
 
 class UserController {
     static async allDocuments(req, res) {
         try {
-            const documents = await document.findAll()
+            const documents = await document.findAll({
+                include: [ spm ]
+            })
 
             res.status(200).json(documents)
         } catch (err) {
@@ -14,7 +16,7 @@ class UserController {
     static async create(req, res) {
         try {
             const { namafile, jenis, ukuran, spmId } = req.body
-
+            
             let result = await document.create({
                 namafile, jenis, ukuran, spmId
             })

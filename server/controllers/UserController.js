@@ -1,5 +1,6 @@
 const { user } = require('../models')
-
+const { encryptPwd, decryptPwd } = require('../helpers/bcrypt')
+const { tokenGenerator } = require('../helpers/jwt')
 class UserController {
     static async allUsers(req, res) {
         try {
@@ -16,7 +17,7 @@ class UserController {
             const { namalengkap, NIP, handphone, password, unitkerja, kewenangan, akun, foto } = req.body
 
             let result = await user.create({
-                namalengkap, NIP, handphone, password, unitkerja, kewenangan, akun, foto
+                namalengkap, NIP, handphone, password: encryptPwd(password), unitkerja, kewenangan, akun, foto
             })
 
             res.status(201).json(result)
@@ -34,8 +35,12 @@ class UserController {
             })
             // console.log(findNIP)
             if (findNIP) {
-                if (findNIP.password === password) {
-                    res.status(200).json(findNIP)
+                if (decryptPwd(findNIP.password, password)) {
+                    // res.status(200).json(findNIP)
+                    let token = tokenGenerator(findNIP)
+                    res.status(200).json({
+                        access_token:token
+                    })
                 } else {
                     throw {
                         message: "Invalid password"
