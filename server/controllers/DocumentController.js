@@ -15,14 +15,15 @@ class UserController {
 
     static async create(req, res) {
         try {
-            const { namafile, jenis, ukuran, spmId } = req.body
-            
+            const { jenis, spmId } = req.body
+            let namafile = req.file.filename;
+            let ukuran = req.file.size
+
             let result = await document.create({
                 namafile, jenis, ukuran, spmId
             })
 
             res.status(201).json(result)
-            // console.log(req.body)
         } catch (err) {
             res.status(500).json(err)
         }

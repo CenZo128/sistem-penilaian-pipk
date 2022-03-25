@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000;
 const cors = require('cors')
 app.use(cors())
 
-const path = require('path')
-app.use(express.static(path.join(__dirname, '')))
+// const path = require('path')
+// app.use(express.static(path.join(__dirname, '')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 const routes = require('./routes')
