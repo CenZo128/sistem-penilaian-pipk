@@ -2,43 +2,46 @@ import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 
 import Home from '../pages/HomePage'
-import Users from '../pages/User'
+import Users from '../pages/User/User'
+import AddUser from '../pages/User/AddUser'
 
 const MainPage = () => {
     return (
         <div className="col-md-10">
             <div className="w-100 main-navbar">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                <nav className="navbar navbar-
+                expand-lg navbar-light bg-light">
+                    <div className="container-fluid">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav me-auto">
-                                <li class="nav-item">
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav me-auto">
+                                <li className="nav-item">
                                     <p>Sistem Penilaian PIPK</p>
                                 </li>
                             </ul>
                             <ul className="navbar-nav ms-auto">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         User's Name
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Account</a></li>
-                                        <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a className="dropdown-item" href="#">Account</a></li>
+                                        <li><a className="dropdown-item" href="#">Log Out</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                 </nav>
             </div>
             <div className="w-100 main-page">
                 <Routes>
                     <Route exact path='/' element={<Home></Home>}></Route>
-                    <Route exact path ='/users' element={<Users></Users>}></Route>
+                    <Route exact path='/users' element={<Users></Users>}></Route>
+                    <Route exact path='/users/add' element={<AddUser></AddUser>}></Route>
                 </Routes>
 
             </div>

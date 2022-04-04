@@ -10,7 +10,7 @@ import {
 const Sidebar = () => {
     return (
         <div className="col-md-2">
-            <div className="sidebar-logo">
+            <div className="sidebar-logo bg-dark text-white">
                 <Link to="/"><img className="img-fluid" src={"https://thumbs.dreamstime.com/b/money-logo-template-design-vector-icon-illustration-money-logo-template-design-vector-icon-illustration-163187565.jpg"} /></Link>
             </div>
             <div className="sidebar-menu my-3">
