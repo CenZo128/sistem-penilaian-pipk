@@ -11,7 +11,7 @@ const MainPage = () => {
             <div className="w-100 main-navbar">
                 <nav className="navbar navbar-
                 expand-lg navbar-light bg-light">
-                    <div className="container-fluid">
+                    <div className="container">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -26,7 +26,7 @@ const MainPage = () => {
                                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         User's Name
                                     </a>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a className="dropdown-item" href="#">Account</a></li>
                                         <li><a className="dropdown-item" href="#">Log Out</a></li>
                                     </ul>

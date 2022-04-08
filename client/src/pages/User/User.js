@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import {Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import { DataGrid } from '@mui/x-data-grid'
+import { getUsers, deleteUser } from '../../axios/userAxios'
 
 const User = () => {
     // const rows = [
@@ -16,19 +16,9 @@ const User = () => {
     // ];
 
     const [users, setUsers] = useState([])
-    const getUsers = async () => {
-        try {
-            let users = await axios({
-                method: 'GET',
-                url: 'http://localhost:3000/api/users'
-            })
-            setUsers(users.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    
     useEffect(() => {
-        getUsers()
+        getUsers(result => setUsers(result))
 
     }, [])
 
@@ -41,7 +31,8 @@ const User = () => {
     }
 
     const deleteHandler = async (id) => {
-        console.log("Delete Handler ", + id)
+        await deleteUser(id, result => setUsers(result))
+        // console.log("Delete Handler ", + id)
     }
     const editHandler = async (id) => {
         console.log("Edit Handler ", + id)
